@@ -1,44 +1,16 @@
 import json
 
-# ans_file = './pope_random_multi-gemini-0517-best.jsonl'
-# ans_file = './pope_random_gemini-single-worst.jsonl'
-# ans_file = './pope_random_gemini-0705_singleWhy_1&2.jsonl'
-# ans_file = './pope_random_gemini-0705_singleWhy.jsonl'
-# ans_file = './pope_random_gemini-0706_single_self-reflection_Re.jsonl'
-# ans_file = './pope_random_openai-0612_2.jsonl' # gpt-4o
-# ans_file = './pope_random_multi-openai-0613.jsonl'
-# ans_file = './pope_random_gemini_sro.jsonl'
-# ans_file = './pope_random_multi-gemini-0717_message-propagation_1.jsonl'
-# ans_file = './pope_random_multi-gemini-0717_role-play_2.jsonl'
-# ans_file = './pope_random_multi-gemini-0517_3.jsonl'
-# ans_file = './pope_random_gemini-1.5_single-0724_3.jsonl'
-ans_file = './pope_random_multi_gpt4o_0725_messageAndrole_Re_4.jsonl'
-# ans_file = './pope_random_multi_gpt4o_0725_role_Re_4.jsonl'
+ans_file = '../output/example/pope_random_gemini_single.jsonl'
 
 
+label_file = '../data/coco_pope_random.json'
 
-# ans_file = './pope_popular_gemini-0505_2.jsonl'
-# ans_file = './pope_popular_multi-gemini-0706_1_Re_7.jsonl'
-# ans_file = './pope_popular_gemini-0706_single_self-reflection_Re_4.jsonl'
-# ans_file = './pope_popular_gemini_sro.jsonl'
 
-# ans_file = './pope_adversarial_gemini-0505_3.jsonl'
-# ans_file = './pope_adversarial_multi-gemini-0706_1_Re_3.jsonl'
-# ans_file = './pope_adversarial_gemini-0706_single_self-reflection_Re_14.jsonl'
-# ans_file = './file/pope_random_gemini_multi.jsonl'
-# ans_file = './pope_adversarial_gemini_sro.jsonl'
+yuan_label_file = '../data/coco_pope_random.json'
 
-label_file = './coco_pope_random_newgt_0720.json'
-# label_file = './coco_pope_random.json'
-# label_file = './coco_pope_popular.json'
-# label_file = './coco_pope_adversarial.json'
 
-yuan_label_file = './coco_pope_random.json'
-# yuan_label_file = './coco_pope_adversarial.json'
-# yuan_label_file = './coco_pope_popular.json'
-
-output_file = './badcase_list/pope_random-0720_gpt-4o-badcaselist-multi_0725_messageAndrole_Re_4.json'
-out = True
+output_file = '../badcase_list/pope_random_gemini_single_badcaselist.json'
+out = False
 quanji = False
 
 answers = [json.loads(q) for q in open(ans_file, 'r')]
@@ -51,7 +23,6 @@ badcase_list = []
 for answer in answers:
     text = answer['answer']
 
-    # Only keep the first sentence
     if ans_file.find('sro') == -1:
         if text.find('.') != -1:
             text = text.split('.')[0]
@@ -63,15 +34,6 @@ for answer in answers:
         else:
             answer['answer'] = 'yes'
     else:
-        # kk = text.split('\n')
-        # if 'No' in kk[0] or 'not' in kk[0] or 'no' in kk[0]:
-        #     answer['answer'] = 'no'
-        # elif text.find("Question4:")!= -1 and text.find("Question4: Y") == -1:
-        #     answer['answer'] = 'no'
-        # elif text.find("4. ") != -1 and text.find("4. Y") == -1:
-        #     answer['answer'] = 'no'
-        # else:
-        #     answer['answer'] = 'yes'
         kk = text.split('\n')
         length = len(kk) - 1
 
