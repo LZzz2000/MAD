@@ -1,6 +1,6 @@
 import json
 
-ans_file = '../output/example/pope_random_gemini_single.jsonl'
+ans_file = '../output/example/pope_random_gemini_multi.jsonl'
 
 
 label_file = '../data/coco_pope_random.json'
@@ -9,7 +9,7 @@ label_file = '../data/coco_pope_random.json'
 yuan_label_file = '../data/coco_pope_random.json'
 
 
-output_file = '../badcase_list/pope_random_gemini_single_badcaselist.json'
+output_file = '../badcase_list/pope_random_gemini_multi_badcaselist.json'
 out = False
 quanji = False
 
